@@ -6,18 +6,13 @@ import CompanyList from "../components/CompanyList/CompanyList";
 import InputFormHandler from "../components/InputForm/InputFormHandler";
 
 export default function CompanyListPage() {
-  const { data, loading, checkContext, searches } = useContext(CompanyContext);
+  const { data, loading } = useContext(CompanyContext);
 
   return (
     <List>
       <h1 style={{ margin: "2vw" }}>Search Github Jobs - API</h1>
       <InputFormHandler />
-      <CompanyList
-        data={data}
-        loading={loading}
-        checkContext={checkContext}
-        searches={searches}
-      />
+      <CompanyList data={data} loading={loading} />
     </List>
   );
 }

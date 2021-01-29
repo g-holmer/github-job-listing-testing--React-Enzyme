@@ -6,8 +6,7 @@ export const CompanyContext = createContext({});
 function CompanyContextProvider({ children, history }) {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [searches, setSearches] = useState([]);
-  const [checkContext, setCheckContext] = useState(false);
+
   const [url, setUrl] = useState("");
   async function fetchData() {
     await fetch(url)
@@ -37,10 +36,6 @@ function CompanyContextProvider({ children, history }) {
         setLoading,
         url,
         setUrl,
-        searches,
-        setSearches,
-        checkContext,
-        setCheckContext,
       }}
     >
       {children}

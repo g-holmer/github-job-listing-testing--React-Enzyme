@@ -2,26 +2,15 @@ import React, { useContext } from "react";
 import { CompanyContext } from "../../contexts/CompanyContext";
 import styled from "styled-components";
 export default function InputFormHandler() {
-  const { setUrl, searches, setSearches, setCheckContext } = useContext(
-    CompanyContext
-  );
+  const { setUrl } = useContext(CompanyContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const inputSearch = e.target[0] && e.target[0].value;
     const finishedInput = inputSearch.replaceAll(" ", "+");
-    setSearches([...searches, { name: inputSearch }]);
 
-    const findSearches = searches.find((item) => {
-      return item.name === inputSearch;
-    });
-
-    if (!findSearches) {
-      const url = `https://us-central1-wands-2017.cloudfunctions.net/githubjobs?description=${finishedInput}`;
-      setUrl(url);
-    } else {
-      setCheckContext(true);
-    }
+    const url = `https://us-central1-wands-2017.cloudfunctions.net/githubjobs?description=${finishedInput}`;
+    setUrl(url);
   };
 
   return (
